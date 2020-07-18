@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thumeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Category creation</h1>
+
+    <form th:action="@{/categories/save}" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" value=""><br>
+        <label for="description">Description:</label><br>
+        <input type="text" id="description" name="description" value=""><br><br>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>

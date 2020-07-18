@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thumeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+   <h1>Job Offer Details</h1>
+ <h3 th:text="'Name: '+ ${vacancy.name}"></h3>
+   <h3 th:text="'Publication Date: '+ ${vacancy.date}"></h3>
+   <h3 th:text="'Offered Salary: '+ ${vacancy.salary}"></h3>
+   <h3 th:text="'Description: '+ ${vacancy.description}"></h3>
+
+</body>
+</html>

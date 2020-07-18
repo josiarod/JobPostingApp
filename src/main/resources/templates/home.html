@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thumeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+<!--
+  <h1 th:text="${message}"></h1>
+  <h2>Today is [[${date}]]</h2>
+-->
+
+<h1>Welcome</h1>
+<h2>Job Offer</h2>
+<h3 th:text="'Title:' + ${name}"></h3>
+<h3 th:text="'Published Date:' + ${date}"></h3>
+<h3 th:text="'Salary:' + ${salary}"></h3>
+<h3 th:text="'Available:' + ${available}"></h3>
+</body>
+</html>
