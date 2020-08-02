@@ -1,20 +1,77 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thumeLeaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Main Page</title>
-</head>
-<body>
-<!--
-  <h1 th:text="${message}"></h1>
-  <h2>Today is [[${date}]]</h2>
--->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
 
-<h1>Welcome</h1>
-<h2>Job Offer</h2>
-<h3 th:text="'Title:' + ${name}"></h3>
-<h3 th:text="'Published Date:' + ${date}"></h3>
-<h3 th:text="'Salary:' + ${salary}"></h3>
-<h3 th:text="'Available:' + ${available}"></h3>
+    <title>JobsApp | App to apply to job offers.</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<header th:insert="fragments/menu :: main-menu">
+
+</header>
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h3>Find the job you are looking for.</h3>
+            You can search by description and category.
+            <form class="form-inline">
+                <input type="text" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Start searching">&nbsp;
+                <select class="custom-select custom-select mb-3">
+                    <option selected>Choose a category</option>
+                    <option value="1">Sales</option>
+                    <option value="2">Accounting</option>
+                    <option value="3">Transportation</option>
+                    <option value="4">IT</option>
+                    <option value="5">Construction</option>
+                </select>&nbsp;
+                <button type="submit" class="btn btn-primary mb-3">Search</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+
+    <div class="container">
+        <h2 class="font-weight-bold text-center text-capitalize">Highlighted</h2>
+        <hr>
+        <div class="row" th:each="vacancy : ${vacancies}">
+            <div class="col-md-3">
+                <img class="rounded mx-auto d-block" th:src="@{/images/{img} (img=${vacancy.image})}" alt="Generic placeholder image" width="220" height="220">
+            </div>
+            <div class="col-md-9">
+                <h2 th:text="${vacancy.name}"></h2>
+                <h6 class="card-title"><strong>Category: </strong> <span></span></h6>
+                <h6 class="card-title"><strong>Published: </strong> <span th:text="${vacancy.date}"></span></h6>
+                <p th:text="${vacancy.description}"></p>
+                <p><a class="btn btn-secondary" th:href="@{/vacancies/view/{id} (id=${vacancy.id})}" role="button">View details &raquo;</a></p>
+            </div>
+        </div>
+        <hr>
+    </div> <!-- /container -->
+
+</main>
+
+<footer class="footer" th:insert="fragments/footer :: footer">
+
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
