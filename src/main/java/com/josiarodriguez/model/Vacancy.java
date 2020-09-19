@@ -10,7 +10,24 @@ public class Vacancy {
     private Double salary;
     private Integer highlighted;
     private String image = "no-image.png";
+    private String status;
+    private String details;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
 
     public String getImage() {
         return image;
@@ -78,6 +95,10 @@ public class Vacancy {
                 ", description='" + description + '\'' +
                 ", date=" + date +
                 ", salary=" + salary +
+                ", highlighted=" + highlighted +
+                ", image='" + image + '\'' +
+                ", status='" + status + '\'' +
+                ", details='" + details + '\'' +
                 '}';
     }
 }

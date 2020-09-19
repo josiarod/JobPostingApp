@@ -20,18 +20,23 @@ public class VacanciesController {
     }
 
     @PostMapping("/save")
-    public String save(@RequestParam("name") String name, @RequestParam("description") String description,@RequestParam("status") String status,
-                       @RequestParam("date") String date, @RequestParam("highlighted") int highlighted,
-                       @RequestParam("salary") double salary,@RequestParam("details") String details){
-        System.out.println("Vacancy Name: " + name);
-        System.out.println("Description: " + description);
-        System.out.println("Status: " + status);
-        System.out.println("Publication Date: " + date);
-        System.out.println("Highlighted: " + highlighted);
-        System.out.println("Offered Salary: " + salary);
-        System.out.println("Details: " + details);
+    public String save(Vacancy vacancy){
+        System.out.println("Vacancy : " + vacancy);
         return "vacancies/vacanciesList";
     }
+//    @PostMapping("/save")
+//    public String save(@RequestParam("name") String name, @RequestParam("description") String description,@RequestParam("status") String status,
+//                       @RequestParam("date") String date, @RequestParam("highlighted") int highlighted,
+//                       @RequestParam("salary") double salary,@RequestParam("details") String details){
+//        System.out.println("Vacancy Name: " + name);
+//        System.out.println("Description: " + description);
+//        System.out.println("Status: " + status);
+//        System.out.println("Publication Date: " + date);
+//        System.out.println("Highlighted: " + highlighted);
+//        System.out.println("Offered Salary: " + salary);
+//        System.out.println("Details: " + details);
+//        return "vacancies/vacanciesList";
+//    }
 
 
 
