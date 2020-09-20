@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface IVacancyService {
     List<Vacancy> searchAll();
+
     Vacancy searchById(Integer VacancyId);
+
+    void save(Vacancy vacancy);
 }

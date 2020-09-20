@@ -3,9 +3,15 @@ package com.josiarodriguez.controller;
 import com.josiarodriguez.model.Vacancy;
 import com.josiarodriguez.service.IVacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/vacancies")
@@ -14,13 +20,22 @@ public class VacanciesController {
     @Autowired
     private IVacancyService vacancyService;
 
+    @GetMapping("/index")
+    public String showIndex(Model model) {
+        List<Vacancy> list = vacancyService.searchAll();
+        model.addAttribute("vacancies", list);
+        return "vacancies/vacanciesList";
+    }
+
+
     @GetMapping("/create")
-    public String create(){
+    public String create() {
         return "vacancies/vacancyForm";
     }
 
     @PostMapping("/save")
-    public String save(Vacancy vacancy){
+    public String save(Vacancy vacancy) {
+        vacancyService.save(vacancy);
         System.out.println("Vacancy : " + vacancy);
         return "vacancies/vacanciesList";
     }
@@ -39,20 +54,25 @@ public class VacanciesController {
 //    }
 
 
-
     @GetMapping("/delete")
-    public String delete(@RequestParam("id") int vacancyId, Model model){
+    public String delete(@RequestParam("id") int vacancyId, Model model) {
         System.out.println("Deleting vacancy with id: " + vacancyId);
-       model.addAttribute("id", vacancyId);
+        model.addAttribute("id", vacancyId);
         return "message";
     }
 
     @GetMapping("/view/{id}")
-    public String seeDetails(@PathVariable("id") int vacancyId, Model model){
+    public String seeDetails(@PathVariable("id") int vacancyId, Model model) {
         Vacancy vacancy = vacancyService.searchById(vacancyId);
-       System.out.println("Vacancy: " + vacancy);
-       model.addAttribute("vacancy", vacancy);
-       //Find vacancy details using id in the DB...
-       return "details";
+        System.out.println("Vacancy: " + vacancy);
+        model.addAttribute("vacancy", vacancy);
+        //Find vacancy details using id in the DB...
+        return "details";
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyy");
+        webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 }

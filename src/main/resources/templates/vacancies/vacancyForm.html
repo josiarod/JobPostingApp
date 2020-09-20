@@ -13,7 +13,7 @@
     <!-- Custom styles for this template -->
     <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
     <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
-    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" >
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
 </head>
 
 <body>
@@ -34,13 +34,15 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Job offer title" required="required">
+                                <input type="text" class="form-control" id="name" name="name"
+                                       placeholder="Job offer title" required="required">
                             </div>
                         </div>
                         <div class="col-md-9">
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <input type="text" class="form-control" id="description" name="description" placeholder="Brief job offer description" required="required">
+                                <input type="text" class="form-control" id="description" name="description"
+                                       placeholder="Brief job offer description" required="required">
                             </div>
                         </div>
                     </div>
@@ -71,17 +73,20 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="date">Publication Date</label>
-                                <input type="text" class="form-control" name="date" id="date" placeholder="Publication Date" required="required">
+                                <input type="text" class="form-control" name="date" id="date"
+                                       placeholder="Publication Date" required="required">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-check">
                                 <label class="form-check-label" for="highlighted0"></label><br>
-                                <input class="form-check-input" type="radio" name="highlighted" id="highlighted" value="1" checked="checked">
+                                <input class="form-check-input" type="radio" name="highlighted" id="highlighted"
+                                       value="1" checked="checked">
                                 <label class="form-check-label" for="highlighted1">highlighted</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="highlighted" id="highlighted2" value="0">
+                                <input class="form-check-input" type="radio" name="highlighted" id="highlighted2"
+                                       value="0">
                                 <label class="form-check-label" for="highlighted2">No highlighted</label>
                             </div>
                         </div>
@@ -90,7 +95,8 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="salary">Offered salary (Aprox)</label>
-                                <input type="text" class="form-control" name="salary" id="salary" placeholder="Approximate salary." required="required">
+                                <input type="text" class="form-control" name="salary" id="salary"
+                                       placeholder="Approximate salary." required="required">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -110,7 +116,8 @@
                         </div>
                         <div class="col-md-3">
                             <label for="image">Image/Logo</label>
-                            <img class="rounded mx-auto d-block" src="images/construccion-logo.png" alt="Generic placeholder image" width="200" height="200">
+                            <img class="rounded mx-auto d-block" src="images/construccion-logo.png"
+                                 alt="Generic placeholder image" width="200" height="200">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>

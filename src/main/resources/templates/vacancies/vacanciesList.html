@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Jobs App | Job Offers List</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
 </head>
+
 <body>
- <h1>Vacancies List</h1>
+
+<header th:insert="fragments/menu :: main-menu"></header>
+
+<main role="main">
+    <hr>
+    <div class="container">
+
+        <div class="card">
+            <h4 class="card-header"><strong>Job Offers List</strong></h4>
+            <div class="card-body">
+                <a class="btn btn-primary" th:href="@{/vacancies/create}" title="Create New Job Offer" role="button"><i
+                        class="fas fa-file" aria-hidden="true"></i> New</a>
+                <hr>
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Category</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Pub. Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Highlighted</th>
+                        <th scope="col">Operations</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="vacancy : ${vacancies}">
+                        <td></td>
+                        <td th:text="${vacancy.name}"></td>
+                        <td th:text="${vacancy.date}"></td>
+                        <td th:text="${vacancy.status}"></td>
+                        <td th:text="${vacancy.highlighted==1 ? 'YES' : 'NO' }"></td>
+                        <td>
+                            <a href="#" class="btn btn-success btn-sm" role="button" title="Edit."><i
+                                    class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                            <a href="#" onclick="return confirm('¿Are You Sure?')" class="btn btn-success btn-sm"
+                               role="button" title="Delete."><i class="fas fa-trash" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div> <!-- /container -->
+
+</main>
+
+<footer th:insert="fragments/footer :: footer" class="footer"></footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
