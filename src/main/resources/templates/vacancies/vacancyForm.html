@@ -29,7 +29,13 @@
         <div class="card">
             <h4 class="card-header"><strong>Job Offer Information</strong></h4>
             <div class="card-body">
-                <form th:action="@{/vacancies/save}" method="post">
+                <form th:action="@{/vacancies/save}" method="post" th:object="${vacancy}">
+                   <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger" role="alert">
+                       Please fix the following:
+                       <ul>
+                           <li th:each="err : ${#fields.errors('*')}" th:text="${err}"/>
+                       </ul>
+                   </div>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">

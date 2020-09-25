@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,12 +31,19 @@ public class VacanciesController {
 
 
     @GetMapping("/create")
-    public String create() {
+    public String create(Vacancy vacancy) {
         return "vacancies/vacancyForm";
     }
 
     @PostMapping("/save")
-    public String save(Vacancy vacancy) {
+    public String save(Vacancy vacancy, BindingResult result) {
+       if(result.hasErrors()){
+           for(ObjectError error: result.getAllErrors()){
+               System.out.println("An error has occurred: " + error.getDefaultMessage());
+           }
+           return "vacancies/vacancyForm";
+       }
+
         vacancyService.save(vacancy);
         System.out.println("Vacancy : " + vacancy);
         return "vacancies/vacanciesList";
